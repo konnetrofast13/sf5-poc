@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  symfony:
+    container_name: symfony_5.4_poc
+    command: ["./server.sh"]
+    build:
+      context: symfony
+      args:
+        ONLY_ONE_TIME: 'true'
+    ports:
+      - 88:80
+    volumes:
+      - ${SYMFONY_POC_PATH}:/var/www/poc
+    stdin_open: true
+    tty: true
